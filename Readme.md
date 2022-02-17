@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Viktor Kotlov](https://up.htmlacademy.ru/javascript/25/user/1657329).
-* Наставник: `Альбина Токарчук`.
+* Наставник: [Альбина Токарчук](https://htmlacademy.ru/profile/id167491).
 
 ---
 
