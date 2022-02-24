@@ -5,15 +5,14 @@ function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   if (min >= 0 && max > min) {
-  return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
+    return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
   }
   return 'Введите положительное значение.';
 }
 
-getRandomInt(1, 10);
-
-function getCheckMaxStringLength (stringTest, maxLength) {
+function getCheckMaxStringLength(stringTest, maxLength) {
   return stringTest.length <= maxLength;
 }
 
+getRandomInt(1, 10);
 getCheckMaxStringLength('', 50);
