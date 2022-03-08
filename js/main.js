@@ -83,6 +83,7 @@ const buildObjects = () => {
   return objects;
 };
 
+
 const arrayWithObject = buildObjects ();
 
 console.log (arrayWithObject);
