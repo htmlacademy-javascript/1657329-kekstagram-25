@@ -1,8 +1,4 @@
-const comments = [];
-
-const numberSumObject = 25;
-
-const userName = [
+const USER_NAME = [
   'Инокентий',
   'Василиса',
   'Аполинарий',
@@ -13,7 +9,7 @@ const userName = [
   'Василевс'
 ];
 
-const message = [
+const MESSAGE = [
 'Всё отлично!',
 'В целом всё неплохо. Но не всё.',
 'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
@@ -22,7 +18,7 @@ const message = [
 'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
 
-const description = [
+const DESCRIPTION = [
    'Отдыхаю с наслождением',
    'Созидаю мир',
    'Размышляю над проблемами мироздания',
@@ -32,6 +28,8 @@ const description = [
    'Миг через призму сознания',
    'Прекрасный момент'
 ];
+
+const NUMBER_SUM_OBJECT = 25;
 
 // Функция взята из интернета и доработана
 // Источник - https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore#_random
@@ -52,25 +50,39 @@ function getCheckMaxStringLength(stringTest, maxLength) {
   return stringTest.length <= maxLength;
 };
 
-const buildObject = () => {
-  return {
-    id: getRandomPositiveInteger (1, 25),
-    url: 'photos/' + getRandomPositiveInteger (1,15) + '.jpg',
-    description: getRandomElement (description),
-    likes: getRandomPositiveInteger (15, 200),
-    comments: buildComments ()
-  };
-};
+const getShuffledItems = (items) => {
+  const shuffledItems = items.slice().sort(() => Math.random() - 0.5);
+
+  return shuffledItems;
+}
 
 const buildComments = () => {
-  return {
-      id: getRandomPositiveInteger (1, 25),
+  let comments = [];
+  for (let i = 1; i <= getRandomPositiveInteger (1, 6); i++) {
+    comments.push({
+      id: i,
       avatar: 'img/avatar-' + getRandomPositiveInteger (1, 6) + '.svg',
-      message: getRandomElement (message),
-      name: getRandomElement (userName)
-    }
-  }
+      message: getRandomElement (MESSAGE),
+      name: getRandomElement (USER_NAME)
+    })
+  };
+  return comments;
+};
 
-const arrayWithObject = Array.from({length: numberSumObject}, buildObject);
+const buildObjects = () => {
+  let objects = [];
+  for (let i = 1; i <= NUMBER_SUM_OBJECT; i++) {
+    objects.push ({
+      id: i,
+      url: 'photos/' + i + '.jpg',
+      description: getRandomElement (DESCRIPTION),
+      likes: getRandomPositiveInteger (15, 200),
+      comments: buildComments ()
+    })
+  };
+  return objects;
+};
+
+const arrayWithObject = buildObjects ();
 
 console.log (arrayWithObject);
