@@ -80,6 +80,7 @@ const buildObjects = () => {
       comments: buildComments ()
     })
   };
+  
   return objects;
 };
 
