@@ -43,9 +43,7 @@ function getRandomPositiveInteger (a, b) {
   return Math.floor(result);
 }
 
-function getRandomElement (elements) {
-  return elements[getRandomPositiveInteger(0, elements.length - 1)];
-}
+const getRandomElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
 const buildComments = () => {
   const comments = [];
