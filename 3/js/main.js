@@ -1,4 +1,4 @@
-const USER_NAME = [
+const USER_NAMES = [
   'Инокентий',
   'Василиса',
   'Аполинарий',
@@ -9,7 +9,7 @@ const USER_NAME = [
   'Василевс'
 ];
 
-const MESSAGE = [
+const MESSAGES = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
@@ -18,8 +18,8 @@ const MESSAGE = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
 
-const DESCRIPTION = [
-  'Отдыхаю с наслождением',
+const DESCRIPTIONS = [
+  'Отдыхаю с наслаждением',
   'Созидаю мир',
   'Размышляю над проблемами мироздания',
   'Просто отличный кадр',
@@ -29,48 +29,49 @@ const DESCRIPTION = [
   'Прекрасный момент'
 ];
 
-const NUMBER_SUM_OBJECT = 25;
-
-
 // Функция взята из интернета и доработана
 // Источник - https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore#_random
 
-function getRandomPositiveInteger (a, b) {
-  const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
-  const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
+const getRandomPositiveInteger = (minNumber, maxNumber) => {
+  const lower = Math.ceil(Math.min(Math.abs(minNumber), Math.abs(maxNumber)));
+  const upper = Math.floor(Math.max(Math.abs(minNumber), Math.abs(maxNumber)));
   const result = Math.random() * (upper - lower + 1) + lower;
 
   return Math.floor(result);
-}
+};
 
 const getRandomElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
+const TOTAL_PHOTOS = 25;
+const SUM_AVATARS = getRandomPositiveInteger(1, 6);
+const SUM_LIKES = getRandomPositiveInteger(15, 200);
+
 const buildComments = () => {
   const comments = [];
-  for (let i = 1; i <= getRandomPositiveInteger (1, 6); i++) {
+  for (let i = 1; i <= SUM_AVATARS; i++) {
     comments.push({
       id: i,
-      avatar: `img/avatar-${getRandomPositiveInteger (1, 6)}.svg`,
-      message: getRandomElement (MESSAGE),
-      name: getRandomElement (USER_NAME)
+      avatar: `img/avatar-${SUM_AVATARS}.svg`,
+      message: getRandomElement(MESSAGES),
+      name: getRandomElement(USER_NAMES)
     });
   }
   return comments;
 };
 
-const buildObjects = () => {
-  const objects = [];
-  for (let i = 1; i <= NUMBER_SUM_OBJECT; i++) {
-    objects.push ({
+const buildDescriptionUserFoto = () => {
+  const ArrayDescriptionUserFoto = [];
+  for (let i = 1; i <= TOTAL_PHOTOS; i++) {
+    ArrayDescriptionUserFoto.push ({
       id: i,
       url: `photos/${i}.jpg`,
-      description: getRandomElement (DESCRIPTION),
-      likes: getRandomPositiveInteger (15, 200),
-      comments: buildComments ()
+      description: getRandomElement(DESCRIPTIONS),
+      likes: SUM_LIKES,
+      comments: buildComments()
     });
   }
 
-  return objects;
+  return ArrayDescriptionUserFoto;
 };
 
-buildObjects ();
+buildDescriptionUserFoto();
