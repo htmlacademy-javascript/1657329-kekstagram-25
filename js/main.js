@@ -1,3 +1,9 @@
+const TOTAL_PHOTOS = 25;
+const avatarMinValue = 1;
+const avatarMaxValue = 6;
+const likesMinValue = 15;
+const likesMaxValue = 200;
+
 const USER_NAMES = [
   'Инокентий',
   'Василиса',
@@ -42,9 +48,8 @@ const getRandomPositiveInteger = (minNumber, maxNumber) => {
 
 const getRandomElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
-const TOTAL_PHOTOS = 25;
-const SUM_AVATARS = getRandomPositiveInteger(1, 6);
-const SUM_LIKES = getRandomPositiveInteger(15, 200);
+const SUM_AVATARS = getRandomPositiveInteger(avatarMinValue, avatarMaxValue);
+const SUM_LIKES = getRandomPositiveInteger(likesMinValue, likesMaxValue);
 
 const buildComments = () => {
   const comments = [];
@@ -60,9 +65,9 @@ const buildComments = () => {
 };
 
 const buildDescriptionUserFoto = () => {
-  const ArrayDescriptionUserFoto = [];
+  const descriptionUserFotos = [];
   for (let i = 1; i <= TOTAL_PHOTOS; i++) {
-    ArrayDescriptionUserFoto.push ({
+    descriptionUserFotos.push ({
       id: i,
       url: `photos/${i}.jpg`,
       description: getRandomElement(DESCRIPTIONS),
@@ -71,7 +76,7 @@ const buildDescriptionUserFoto = () => {
     });
   }
 
-  return ArrayDescriptionUserFoto;
+  return descriptionUserFotos;
 };
 
 buildDescriptionUserFoto();
