@@ -1,8 +1,8 @@
 const TOTAL_PHOTOS = 25;
-const avatarMinValue = 1;
-const avatarMaxValue = 6;
-const likesMinValue = 15;
-const likesMaxValue = 200;
+const AVATAR_MIN_VALUE = 1;
+const AVATAR_MAX_VALUE = 6;
+const LIKES_MIN_VALUE = 15;
+const LIKES_MAX_VALUE = 200;
 
 const USER_NAMES = [
   'Инокентий',
@@ -48,15 +48,12 @@ const getRandomPositiveInteger = (minNumber, maxNumber) => {
 
 const getRandomElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
-const SUM_AVATARS = getRandomPositiveInteger(avatarMinValue, avatarMaxValue);
-const SUM_LIKES = getRandomPositiveInteger(likesMinValue, likesMaxValue);
-
 const buildComments = () => {
   const comments = [];
-  for (let i = 1; i <= SUM_AVATARS; i++) {
+  for (let i = 1; i <= getRandomPositiveInteger(AVATAR_MIN_VALUE, AVATAR_MAX_VALUE); i++) {
     comments.push({
       id: i,
-      avatar: `img/avatar-${SUM_AVATARS}.svg`,
+      avatar: `img/avatar-${getRandomPositiveInteger(AVATAR_MIN_VALUE, AVATAR_MAX_VALUE)}.svg`,
       message: getRandomElement(MESSAGES),
       name: getRandomElement(USER_NAMES)
     });
@@ -71,7 +68,7 @@ const buildDescriptionUserFoto = () => {
       id: i,
       url: `photos/${i}.jpg`,
       description: getRandomElement(DESCRIPTIONS),
-      likes: SUM_LIKES,
+      likes: getRandomPositiveInteger(LIKES_MIN_VALUE, LIKES_MAX_VALUE),
       comments: buildComments()
     });
   }
