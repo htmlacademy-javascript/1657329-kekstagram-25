@@ -1,3 +1,4 @@
-import {buildDescriptionUserFoto} from './data.js';
+import './miniature.js';
+// import {arrayMiniature, cteateMiniature} from './miniature.js';
 
-buildDescriptionUserFoto();
+// buildDescriptionUserFoto();
