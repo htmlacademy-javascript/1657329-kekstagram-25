@@ -1,4 +1,3 @@
-import './miniature.js';
-// import {arrayMiniature, cteateMiniature} from './miniature.js';
+import {cteateMiniature} from './miniature.js';
 
-// buildDescriptionUserFoto();
+cteateMiniature();

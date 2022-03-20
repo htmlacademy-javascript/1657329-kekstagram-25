@@ -22,6 +22,4 @@ const cteateMiniature = () => {
   pictures.appendChild(templateFragment);
 };
 
-console.log(cteateMiniature());
-
 export {arrayMiniature, cteateMiniature};
