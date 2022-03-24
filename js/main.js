@@ -1,3 +1,3 @@
-import {buildDescriptionUserFoto} from './data.js';
+import {createMiniature} from './create-miniature.js';
 
-buildDescriptionUserFoto();
+createMiniature();
