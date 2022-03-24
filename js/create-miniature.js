@@ -1,7 +1,7 @@
 import {buildDescriptionUserFoto} from './data.js';
 
-const templeatePicture = document.querySelector('#picture').content; // Находим фрагмент с содержимым темплейта
-const templateMiniature = templeatePicture.querySelector('.picture');
+const templatePicture = document.querySelector('#picture').content; // Находим фрагмент с содержимым темплейта
+const templateMiniature = templatePicture.querySelector('.picture');
 
 const userImage = document.querySelector('.pictures');
 
