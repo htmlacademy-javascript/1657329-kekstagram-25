@@ -1,3 +1,3 @@
-import {cteateMiniature} from './miniature.js';
+import {Miniature} from './miniature.js';
 
-cteateMiniature();
+Miniature();
