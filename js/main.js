@@ -1,3 +1,3 @@
-import {createMiniature} from './create-miniature.js';
+import {renderPosts} from './full-window.js';
 
-createMiniature();
+renderPosts();
