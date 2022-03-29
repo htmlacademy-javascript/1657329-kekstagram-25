@@ -11,8 +11,7 @@ const getRandomPositiveInteger = (min, max) => {
 
 const getRandomElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
-const isEscEvent = (evt) => {
-  return evt.key === 'Escape' || evt.key === 'Esc';
-};
+const isEscEvent = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
+
 
 export {getRandomPositiveInteger, getRandomElement, isEscEvent};

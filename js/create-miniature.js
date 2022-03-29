@@ -1,23 +1,23 @@
-import {buildDescriptionUserFoto} from './data.js';
-
-const templatePicture = document.querySelector('#picture').content; // Находим фрагмент с содержимым темплейта
-const templateMiniature = templatePicture.querySelector('.picture');
-
-const userImage = document.querySelector('.pictures');
-
-const templateFragment = document.createDocumentFragment();
-
-const createMiniature = () => {
-  buildDescriptionUserFoto().forEach(({url, likes, comments}) => {
-    const miniatureElement = templateMiniature.cloneNode(true);
-
-    miniatureElement.querySelector('.picture__img').src = url;
-    miniatureElement.querySelector('.picture__likes').textContent = likes;
-    miniatureElement.querySelector('.picture__comments').textContent = comments.length;
-
-    templateFragment.appendChild(miniatureElement);
+import { renderBigPhoto } from './full-screen-fotos.js';
+const template = document.querySelector('#picture').content.querySelector('.picture');
+const container = document.querySelector('.pictures');
+const elementFragment = document.createDocumentFragment();
+const renderThumbnail = (item) => {
+  const thumbnail = template.cloneNode(true);
+  thumbnail.querySelector('.picture__img').setAttribute('src', item.url);
+  thumbnail.querySelector('.picture__likes').textContent = item.likes;
+  thumbnail.querySelector('.picture__comments').textContent = item.comments.length;
+  return thumbnail;
+};
+const renderPhotos = (items) => {
+  items.forEach((item) => {
+    const thumbnail = renderThumbnail(item);
+    thumbnail.addEventListener('click', () => {
+      renderBigPhoto(item);
+    });
+    elementFragment.append(thumbnail);
   });
-  userImage.appendChild(templateFragment);
+  return container.append(elementFragment);
 };
 
-export {createMiniature};
+export {renderPhotos};

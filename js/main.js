@@ -1,3 +1,9 @@
-import {renderPosts} from './full-window.js';
+import {buildDescriptionUserFoto} from './data.js';
+import {setCloseBigPhoto, setOpenBigPhoto} from './full-screen-fotos.js';
+import {renderPhotos} from './create-miniature.js';
 
-renderPosts();
+const photosMoreUsers = buildDescriptionUserFoto();
+renderPhotos(photosMoreUsers);
+
+setOpenBigPhoto();
+setCloseBigPhoto();
