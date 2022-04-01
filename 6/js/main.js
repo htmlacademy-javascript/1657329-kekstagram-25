@@ -1,9 +1,7 @@
 import {buildDescriptionUserFoto} from './data.js';
-import {setCloseBigPhoto, setOpenBigPhoto} from './full-screen-fotos.js';
-import {renderPhotos} from './create-miniature.js';
+import {renderPhotos} from './render-photos.js';
 
 const photosMoreUsers = buildDescriptionUserFoto();
 renderPhotos(photosMoreUsers);
 
-setOpenBigPhoto();
-setCloseBigPhoto();
+
