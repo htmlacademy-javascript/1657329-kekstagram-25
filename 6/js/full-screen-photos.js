@@ -1,4 +1,4 @@
-import {onBigPhotoEscKey} from './render-photos.js';
+import {isEscEvent} from './util.js';
 
 const photoPopup = document.querySelector('.big-picture');
 const socialCommentCount = photoPopup.querySelector('.social__comment-count');
@@ -6,7 +6,7 @@ const commentsLoader = photoPopup.querySelector('.comments-loader');
 const templateComment = document.querySelector('#comment').content.querySelector('.social__comment');
 const containerComments = document.querySelector('.social__comments');
 const elementFragment = document.createDocumentFragment();
-
+const exitPopup = photoPopup.querySelector('#picture-cancel');
 
 const closeBigPhoto = () => {
   photoPopup.classList.add('hidden');
@@ -25,11 +25,12 @@ const openBigPhoto = () => {
   document.addEventListener('keydown', onBigPhotoEscKey);
 };
 
-const onBigPhotoClick = () => {
-  closeBigPhoto();
-};
-
-photoPopup.querySelector('#picture-cancel').addEventListener('click', onBigPhotoClick);
+function onBigPhotoEscKey(evt) {
+  if (isEscEvent(evt)) {
+    evt.preventDefault();
+    closeBigPhoto();
+  }
+}
 
 const renderComment = (item) => {
   const comment = templateComment.cloneNode(true);
@@ -49,6 +50,9 @@ const renderBigPhoto = (item) => {
     elementFragment.append(commentLast);
   });
   containerComments.append(elementFragment);
+  openBigPhoto();
 };
 
-export {renderBigPhoto, openBigPhoto, closeBigPhoto};
+exitPopup.addEventListener('click', closeBigPhoto);
+
+export {renderBigPhoto};
