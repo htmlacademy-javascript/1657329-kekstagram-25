@@ -1,3 +1,7 @@
-import {createMiniature} from './create-miniature.js';
+import {buildDescriptionUserFoto} from './data.js';
+import {renderPhotos} from './render-photos.js';
 
-createMiniature();
+const photosMoreUsers = buildDescriptionUserFoto();
+renderPhotos(photosMoreUsers);
+
+

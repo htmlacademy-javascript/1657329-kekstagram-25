@@ -1,9 +1,11 @@
 // Функция взята из интернета и доработана
 // Источник - https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore#_random
 
-const getRandomPositiveInteger = (minNumber, maxNumber) => {
-  const lower = Math.ceil(Math.min(Math.abs(minNumber), Math.abs(maxNumber)));
-  const upper = Math.floor(Math.max(Math.abs(minNumber), Math.abs(maxNumber)));
+const ESCAPE = 'Escape';
+
+const getRandomPositiveInteger = (min, max) => {
+  const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
+  const upper = Math.floor(Math.max(Math.abs(min), Math.abs(max)));
   const result = Math.random() * (upper - lower + 1) + lower;
 
   return Math.floor(result);
@@ -11,4 +13,7 @@ const getRandomPositiveInteger = (minNumber, maxNumber) => {
 
 const getRandomElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
-export {getRandomPositiveInteger, getRandomElement};
+const isEscEvent = (evt) => evt.key === ESCAPE;
+
+
+export {getRandomPositiveInteger, getRandomElement, isEscEvent};
