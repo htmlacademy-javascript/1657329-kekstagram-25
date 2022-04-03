@@ -1,5 +1,4 @@
-import {isEscEvent} from './util.js';
-import {renderBigPhoto, openBigPhoto, closeBigPhoto} from './full-screen-photos.js';
+import {renderBigPhoto} from './full-screen-photos.js';
 
 const templatePicture = document.querySelector('#picture').content.querySelector('.picture');
 const containerUsersPictures = document.querySelector('.pictures');
@@ -13,23 +12,16 @@ const renderThumbnail = (item) => {
   return thumbnail;
 };
 
-const onBigPhotoEscKey = (evt) => {
-  if (isEscEvent(evt)) {
-    evt.preventDefault();
-    closeBigPhoto();
-  }
-};
-
 const renderPhotos = (items) => {
   items.forEach((item) => {
     const thumbnail = renderThumbnail(item);
-    thumbnail.addEventListener('click', () => {
+    thumbnail.addEventListener('click', (evt) => {
+      evt.preventDefault();
       renderBigPhoto(item);
-      openBigPhoto();
     });
     elementFragment.append(thumbnail);
   });
   return containerUsersPictures.append(elementFragment);
 };
 
-export {renderPhotos, onBigPhotoEscKey};
+export {renderPhotos};
